@@ -1,14 +1,9 @@
-import React, {useSelector} from 'react';
-
-import { selectFilters } from 'redux/FiltersSlice';
+import React from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
-import { selectContacts } from 'redux/ContactsSlice';
 
 export const App = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilters);
 
   return (
     <div>
