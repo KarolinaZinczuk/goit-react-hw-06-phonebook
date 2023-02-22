@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact, selectContacts } from 'redux/ContactsSlice';
 import PropTypes from "prop-types";
