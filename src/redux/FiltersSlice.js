@@ -6,7 +6,7 @@ const initialState = {
 
 export const filtersSlice = createSlice({
   name: 'filters',
-  initialState: initialState.filters,
+  initialState: initialState,
   reducers: {
     setFilter: (state, action) => {
       state.filters = action.payload;   
