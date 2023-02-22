@@ -16,12 +16,13 @@ export function ContactForm() {
         const contactName = nameRef.current.value;
         const contactNumber = numberRef.current.value;
         if (
-            contacts.find(contact => contact.name === nameRef && contact.number === numberRef
+            contacts.find(contact => contact.name === contactName && contact.number === contactNumber
             )
         ) {
-            alert(`${nameRef} is already in contacts`);
+            alert(`${contactName} is already in contacts`);
             return;
         }
+   
         dispatch(
             addContact({
                 id: nanoid(),
@@ -36,21 +37,23 @@ export function ContactForm() {
     return (
         <div className={styles.section}>
             <form onSubmit={handleAddContact}>
-                <label>
+                <label className={styles.label}>
                     <h2>Name</h2>
                     <input
                         type="text"
                         name="name"
+                        required
                         ref={nameRef}
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                     />
                 </label>
-                <label>
+                <label className={styles.label}>
                     <h2>Number</h2>
                     <input
                         type="text"
                         name="number"
+                        required
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                         ref={numberRef}
