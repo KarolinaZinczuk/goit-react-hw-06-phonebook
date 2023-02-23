@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/ContactsSlice';
 import { selectContacts } from 'redux/selectors';
@@ -11,6 +11,15 @@ export function ContactForm() {
     const nameRef = useRef(null);
     const numberRef = useRef(null);    
     const dispatch = useDispatch();
+
+  const isMounted = useRef(false);
+    useEffect(() => {
+        if (isMounted.current) {
+            localStorage.setItem('contacts', JSON.stringify(contacts));
+        } else {
+            isMounted.current = true;
+        }
+    }, [contacts]);
 
     const handleAddContact = (e) => {
         e.preventDefault();
