@@ -12,13 +12,8 @@ export function ContactForm() {
     const numberRef = useRef(null);    
     const dispatch = useDispatch();
 
-  const isMounted = useRef(false);
     useEffect(() => {
-        if (isMounted.current) {
-            localStorage.setItem('contacts', JSON.stringify(contacts));
-        } else {
-            isMounted.current = true;
-        }
+        localStorage.setItem('contacts', JSON.stringify(contacts));
     }, [contacts]);
 
     const handleAddContact = (e) => {
